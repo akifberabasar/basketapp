@@ -1,4 +1,14 @@
-import { Container, SimpleGrid,List, ThemeIcon,Input,Button,Group,Drawer } from '@mantine/core';
+import { 
+  Container, 
+  SimpleGrid,
+  List, 
+  ThemeIcon,
+  Input,
+  Button,
+  Group,
+  Drawer,
+  Indicator 
+} from '@mantine/core';
 import { IconCircleCheck, IconCircleDashed } from '@tabler/icons';
 import { useState } from 'react';
 import Card from './components/Card';
@@ -52,9 +62,25 @@ function App() {
        <Input value={searchValue}  onChange={(e) => setSearchValue(e.target.value)} />
        </Input.Wrapper> 
        <Button onClick={() => setSearchValue("")}>Temizle</Button>
-       <Button onClick={() => setOpened(true)}>Sepet</Button>  
+       <Indicator  color="red" label={basketItems.length} size={22}>
+        <Button onClick={() => setOpened(true)}>Sepet</Button>  
+       </Indicator>
     </Group>
     
+    <SimpleGrid cols={3} className="Store">
+      {filteredItems.map(({name , src}) => {
+        return ( <Card 
+          key={name} 
+          name={name} 
+          src={src}
+          onAdd={() => setbasketItems([...basketItems, { name }])}
+          />
+        );
+      })}
+     
+     </SimpleGrid >
+      
+
     <Drawer
         opened={opened}
         onClose={() => setOpened(false)}
@@ -64,9 +90,7 @@ function App() {
       >
         {/* Drawer content */}
       
-      
-
-    <List
+        { <List
      className="List"
       spacing="xs"
       size="sm"
@@ -77,27 +101,18 @@ function App() {
         </ThemeIcon>
       }
     >
-      {storeItems.map(({name} , index) => ( 
+      {basketItems.map(({name} , index) => ( 
       <List.Item key={index}>{name}</List.Item>
       ))}
       
 
-    </List>
-    </Drawer>
+    </List> }
+   
+       </Drawer>
 
-     <SimpleGrid cols={3} className="Store">
-      {filteredItems.map(({name , src}) => {
-        return ( <Card 
-          key={name} 
-          name={name} 
-          src={src}
-          onAdd={ () => setbasketItems([...basketItems, { name }])}
-          />
-        );
-      })}
+    
+
      
-     </SimpleGrid >
-      
     
     </Container>
   );
