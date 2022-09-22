@@ -14,8 +14,6 @@ import { useState } from 'react';
 import Card from './components/Card';
 import './App.css';
 
-
-
 const storeItems =  [{
   name : "Fotoğraf Makinası",
   src: "kamera",
@@ -48,7 +46,6 @@ const storeItems =  [{
 },
 ];
 
-
 function App() {
   let [opened, setOpened] = useState(false);
   let [basketItems, setbasketItems] = useState([]);
@@ -80,7 +77,6 @@ function App() {
      
      </SimpleGrid >
       
-
     <Drawer
         opened={opened}
         onClose={() => setOpened(false)}
@@ -104,19 +100,12 @@ function App() {
       {basketItems.map(({name} , index) => ( 
       <List.Item key={index}>{name}</List.Item>
       ))}
-      
 
     </List> }
    
        </Drawer>
-
-    
-
-     
-    
     </Container>
   );
 }
-
 
 export default App;
