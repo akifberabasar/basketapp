@@ -1,5 +1,27 @@
+
+.header {
+  border: 3px solid rgb(194, 113, 46);
+  padding: 10px;
+  padding-left: 70px;
+  border-radius: 15px;
+  margin-top: 30px;
+}
+
+.iconn {
+  align-items: center;
+}
+
 .App {
   text-align: center;
+
+  background-color: darksalmon;
+}
+
+.temizle:hover{
+  background-color: #596c92;
+  color:aliceblue;
+  transition: 0.8s;
+  scale: 1.1;
 }
 
 .List {
@@ -23,6 +45,10 @@
 
 .Store {
   padding: 20px;
+  border: 5px solid antiquewhite;
+  background-color:navajowhite;
+  border-radius: 30px;
+  margin-top: 20px;
 }
 
 .App-header {

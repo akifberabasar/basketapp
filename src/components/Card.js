@@ -1,5 +1,6 @@
 import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
 
+
 const CardComponent = ({name ,src, onAdd}) => {
   return (
 
@@ -8,6 +9,7 @@ const CardComponent = ({name ,src, onAdd}) => {
           <Image
             src={`/assets/images/${src}.jpg`}
             height={160}
+        
             alt="Norway"
           />
         </Card.Section>
@@ -24,7 +26,7 @@ const CardComponent = ({name ,src, onAdd}) => {
           activities on and around the fjords of Norway
         </Text>
 
-        <Button variant="light" color="blue" fullWidth mt="md" radius="md" onClick={onAdd}>
+        <Button  className='ekle' variant="light" color="blue" fullWidth mt="md" radius="md" onClick={onAdd}>
           Ekle
         </Button>
      </Card>
