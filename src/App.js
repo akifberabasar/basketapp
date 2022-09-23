@@ -54,7 +54,7 @@ function App() {
  
   return (
     <Container>
-      <Group align="end">
+      <Group className='group' align="end">
        <Input.Wrapper label="Arama">
        <Input value={searchValue}  onChange={(e) => setSearchValue(e.target.value)} />
        </Input.Wrapper> 
