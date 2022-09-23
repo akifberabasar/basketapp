@@ -2,6 +2,7 @@ import {
   
   Container, 
   SimpleGrid,
+  Badge,
   List, 
   ThemeIcon,
   Input,
@@ -17,31 +18,37 @@ import Card from './components/Card';
 import './App.css';
 
 const storeItems =  [{
+  id : 100,
   name : "Fotoğraf Makinası",
   src: "kamera",
   price : 20
 },
 {
+  id : 101,
   name : "Kulaklık",
   src: "kulaklık",
   price : 10
 },
 {
+  id : 102,
   name : "Kol",
   src: "kol",
   price : 25
 },
 {
+  id : 103,
   name : "Araba",
   src: "araba",
   price : 25
 },
 {
+  id : 104,
   name : "Gözlük",
   src: "göözlük",
   price : 25
 },
 {
+  id : 105,
   name : "Saat",
   src: "saat (2)",
   price : 25
@@ -53,6 +60,18 @@ function App() {
   let [basketItems, setbasketItems] = useState([]);
   let [searchValue, setSearchValue] = useState("");
   let filteredItems = storeItems.filter((item) => item.name.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0);
+
+ let addToBasket = ({ id , name }) =>  {
+   let basketIndex =  basketItems.findIndex((item) => item.id === id);
+   if (basketIndex >= 0) { 
+     let _basketItems = [...basketItems]; 
+     _basketItems[basketIndex].count+=1;
+     setbasketItems(_basketItems);  
+   } else {
+     setbasketItems([...basketItems, {  id, name , count:1  }]);
+   }
+ };
+  
  
   return (
     <Container>
@@ -67,12 +86,12 @@ function App() {
     </Group>
     
     <SimpleGrid cols={3} className="Store">
-      {filteredItems.map(({name , src}) => {
+      {filteredItems.map(({ id,name , src}) => {
         return ( <Card 
           key={name} 
           name={name} 
           src={src}
-          onAdd={() => setbasketItems([...basketItems, { name }])}
+          onAdd={() => addToBasket({id, name})} 
           />
         );
       })}
@@ -99,8 +118,12 @@ function App() {
         </ThemeIcon>
       }
     >
-      {basketItems.map(({name} , index) => ( 
-      <List.Item key={index}>{name}</List.Item>
+      {basketItems.map(({name , count} , index) => ( 
+      <List.Item key={index}>
+        <Group cols={4}>
+       <div> {name}</div>    <Badge>{count}</Badge>
+        </Group> 
+        </List.Item>
       ))}
 
     </List> }
