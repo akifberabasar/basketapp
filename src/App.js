@@ -1,4 +1,5 @@
 import { 
+  
   Container, 
   SimpleGrid,
   List, 
@@ -9,7 +10,8 @@ import {
   Drawer,
   Indicator 
 } from '@mantine/core';
-import { IconCircleCheck, IconCircleDashed } from '@tabler/icons';
+import { IconCircleCheck, IconBasket } from '@tabler/icons';
+import { IconSettings } from '@tabler/icons';
 import { useState } from 'react';
 import Card from './components/Card';
 import './App.css';
@@ -54,13 +56,13 @@ function App() {
  
   return (
     <Container>
-      <Group className='group' align="end">
+      <Group align="end">
        <Input.Wrapper label="Arama">
        <Input value={searchValue}  onChange={(e) => setSearchValue(e.target.value)} />
        </Input.Wrapper> 
        <Button onClick={() => setSearchValue("")}>Temizle</Button>
        <Indicator  color="red" label={basketItems.length} size={22}>
-        <Button onClick={() => setOpened(true)}>Sepet</Button>  
+        <Button onClick={() => setOpened(true)}><IconBasket size={20} /></Button >  
        </Indicator>
     </Group>
     
