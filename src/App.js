@@ -11,7 +11,7 @@ import {
   Drawer,
   Indicator 
 } from '@mantine/core';
-import { IconCircleCheck, IconBasket } from '@tabler/icons';
+import { IconCircleCheck, IconBasket,IconBrandSlack } from '@tabler/icons';
 import { IconSettings } from '@tabler/icons';
 import { useState } from 'react';
 import Card from './components/Card';
@@ -75,11 +75,14 @@ function App() {
  
   return (
     <Container>
-      <Group align="end">
+      <Group className='header' align="end">
+
+        <div className='iconn'><IconBrandSlack size={20} /></div>
        <Input.Wrapper label="Arama">
        <Input value={searchValue}  onChange={(e) => setSearchValue(e.target.value)} />
        </Input.Wrapper> 
-       <Button onClick={() => setSearchValue("")}>Temizle</Button>
+       <div className='iconn'><IconBrandSlack size={20} /></div>
+       <Button className="temizle" onClick={() => setSearchValue("")}>Temizle</Button>
        <Indicator  color="red" label={basketItems.length} size={22}>
         <Button onClick={() => setOpened(true)}><IconBasket size={20} /></Button >  
        </Indicator>
