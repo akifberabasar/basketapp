@@ -100,7 +100,7 @@ function App() {
      
      </SimpleGrid >
       
-    <Drawer className="sekme"
+    <Drawer
         opened={opened}
         onClose={() => setOpened(false)}
         title="Sepet"
