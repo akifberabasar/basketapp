@@ -12,7 +12,6 @@ import {
   Indicator 
 } from '@mantine/core';
 import { IconCircleCheck, IconBasket,IconBrandSlack } from '@tabler/icons';
-import { IconSettings } from '@tabler/icons';
 import { useState } from 'react';
 import Card from './components/Card';
 import './App.css';
@@ -101,7 +100,7 @@ function App() {
      
      </SimpleGrid >
       
-    <Drawer
+    <Drawer className="sekme"
         opened={opened}
         onClose={() => setOpened(false)}
         title="Sepet"
